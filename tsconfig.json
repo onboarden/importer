@@ -1,0 +1,14 @@
+{
+  "exclude": ["node_modules"],
+  "include": ["./src/**/*"],
+  "compilerOptions": {
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "strict": true,
+    "baseUrl": ".",
+    "outDir": "./dist"
+  }
+}

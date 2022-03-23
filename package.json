@@ -1,0 +1,37 @@
+{
+  "name": "@onboarden/importer",
+  "version": "0.0.1",
+  "description": "The importer tool for onboarden",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onboarden/importer.git"
+  },
+  "keywords": [
+    "onboarden",
+    "data-onboarding",
+    "data",
+    "import"
+  ],
+  "maintainers": [
+    "Seishiro Takamatsu <seishiro.takamatsu@ghost-inc.jp>",
+    "Shohei Tanaka <shohei.tanaka@ghost-inc.jp>",
+    "Chihiro Yamamoto <chihiro.yamamoto@ghost-inc.jp>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/onboarden/importer/issues"
+  },
+  "homepage": "https://onboarden.io/",
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^4.6.2"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ]
+}

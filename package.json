@@ -24,7 +24,11 @@
     "url": "https://github.com/onboarden/importer/issues"
   },
   "homepage": "https://onboarden.io/",
-  "dependencies": {},
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1"
+  },
   "devDependencies": {
     "typescript": "^4.6.2"
   },

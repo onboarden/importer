@@ -1,0 +1,11 @@
+<html>
+  <body>
+    Hello! <%- token %>
+    <script src=""></script>
+    <script>
+      const token = "<%- token %>";
+      console.log("token ", token);
+      launch({ templateId: "YOUR TEMPLATE ID", token });
+    </script>
+  </body>
+</html>

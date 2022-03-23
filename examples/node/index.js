@@ -1,5 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+const addMinutes = require("date-fns/addMinutes");
 const app = express();
 
 const PRIVATE_KEY =
@@ -10,23 +11,13 @@ app.set("views", __dirname);
 app.engine("html", require("ejs").renderFile);
 
 app.get("/", async (_req, res) => {
-  return res.render("index.html", {
-    token: jwt.sign(
-      {
-        user: {
-          id: "customer_id",
-          email: "customer@company.com",
-          name: "Customer name",
-        },
-        org: {
-          id: "company_id",
-          name: "Company name",
-        },
-      },
-      Buffer.from(PRIVATE_KEY, "base64").toString(),
-      { algorithm: "RS256" }
-    ),
-  });
+  const userId = "user-id-of-your-app";
+  const token = jwt.sign(
+    { sub: userId, exp: addMinutes(new Date(), 60).getTime() / 1000 },
+    Buffer.from(PRIVATE_KEY, "base64").toString(),
+    { algorithm: "RS256" }
+  );
+  return res.json({ token });
 });
 
-app.listen(4249);
+app.listen(8000);

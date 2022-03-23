@@ -15,28 +15,7 @@ $token = JWT::encode(
   base64_decode($PRIVATE_KEY),
   'RS256'
 );
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>onboarden Demo</title>
-  <script src=""></script>
-</head>
-<body>
-  <button id="import">インポート</button>
+header("Content-Type: application/json; charset=utf-8");
+echo json_encode(["token" => $token]);
 
-  <script>
-    const token = '<?php echo $token; ?>';
-    console.log("token ", token);
-    launch({ templateId: "YOUR TEMPLATE ID", token });
-
-
-    document.querySelector('#import').addEventListener('click', async () => {
-      await launch({ templateId: "YOUR TEMPLATE ID", token });
-    })
-  </script>
-</body>
-</html>

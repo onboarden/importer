@@ -5,17 +5,18 @@ require 'vendor/autoload.php';
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 
-$PRIVATE_KEY = 'LS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tCk1JSUJWZ0lCQURBTkJna3Foa2lHOXcwQkFRRUZBQVNDQVVBd2dnRThBZ0VBQWtFQXpHVkFRVWhNTmtUbHpxUGkKVVRLaUdIUzQ0R1Zzc2dmbHRzcWgxQUcxTjJzVVRUbTlWQW5oRFh2c1BKdFhrOGJJd2RQRFVWU2IxZlMrd1VISwoxdVgyN3dJREFRQUJBa0JtOVFtczJMSXJGQUYrV1djQzU3Sm5CMFNwSSszZ3I4R3lsZGQyWjNYVTk1K2ZHd2Z1CnlMb3U1cmdUT2wyR0R2T3N4b2lKUExsLzJpb04vOHk3MzVjaEFpRUEvUUUrSTY2V2IzUFpHdkFhNzBZUklvY3cKbkZiRWgyRzJWbzZiblNaOUdkVUNJUURPMExGUksvbXZ3K0I5eDlCMk1tRE1nalpMM0xaMTBYMVViLzJKc2EzTApzd0loQUpJeFhxT2xwVjJmVmtzZmhLRFFIdVNSczRBVER4cWZWb29yZXpYU1lLVkZBaUVBbksxcmQ3UVo3M2MwCkxmWGZUbnZ4NjF6R0o0aW96ZThMeEprbStWYWE5Sk1DSVFDU2U2T2ZLODZKWVFESXgvSVljdzQwZnBWNUprVFcKOUZpUjdQZUhiZE1KUEE9PQotLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tCg==';
+$API_KEY = 'YOUR API KEY'; // change this
     
 $token = JWT::encode(
   [ 
-    'sub' => '',
-    'iat' => '',
+    'sub' => 'user-id-of-your-app',
+    'exp' => time() + 60 * 60,
   ],
-  base64_decode($PRIVATE_KEY),
+  base64_decode($API_KEY),
   'RS256'
 );
 
-header("Content-Type: application/json; charset=utf-8");
-echo json_encode(["token" => $token]);
+header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin', 'http://localhost:3000');
+echo json_encode(['token' => $token]);
 

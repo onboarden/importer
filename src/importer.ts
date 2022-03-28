@@ -13,7 +13,7 @@ type LaunchArgs = {
 export const launch = ({ templateId, jwt, onCompleted }: LaunchArgs) => {
   const div = document.createElement('div');
   div.style.cssText =
-    'position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background-color:rgba(100,100,100,0.3);padding: 32px;';
+    'position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background-color:rgba(100,100,100,0.3);padding:32px;box-sizing:border-box;';
   document.body.appendChild(div);
 
   const iframe = document.createElement('iframe');
@@ -42,7 +42,7 @@ export const launch = ({ templateId, jwt, onCompleted }: LaunchArgs) => {
 
   const closeButton = document.createElement('button');
   closeButton.textContent = '❌';
-  closeButton.style.cssText = 'position:fixed;top:12px;right:12px;';
+  closeButton.style.cssText = 'position:fixed;top:6px;right:6px;cursor:pointer;';
   closeButton.onclick = () => document.body.removeChild(div);
   div.appendChild(closeButton);
 };

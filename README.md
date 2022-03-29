@@ -14,7 +14,6 @@ OR
 yarn add @onboarden/importer
 ```
 
-## Docs
+## How to use
 
-Read more detail here.  
-[https://docs.onboarden.io](https://docs.onboarden.io)
+Sign in to [https://app.onboarden.io/login](https://app.onboarden.io/login) then read the documentation.

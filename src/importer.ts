@@ -1,3 +1,5 @@
+import CLOSE_BUTTON_BASE64 from './closeButton';
+
 const URL = 'https://app.onboarden.io';
 
 export type OnCompletedResult = {
@@ -14,13 +16,13 @@ type LaunchArgs = {
 export const launch = ({ templateId, jwt, onCompleted }: LaunchArgs) => {
   const div = document.createElement('div');
   div.style.cssText =
-    'position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background-color:rgba(100,100,100,0.3);padding:32px;box-sizing:border-box;';
+    'position:fixed;top:0;left:0;width:100%;height:100%;z-index:100;background-color:rgba(0,0,0,0.7);padding:40px;box-sizing:border-box;backdrop-filter: blur(4px);';
   document.body.appendChild(div);
 
   const iframe = document.createElement('iframe');
   iframe.src = encodeURI(`${URL}/t/${templateId}`);
   iframe.style.cssText =
-    'width:100%;height:100%;background-color:white;margin:auto;border-radius:10px;box-shadow:0,0,15px,rgba(0,0,0,.2)';
+    'width:100%;height:100%;background-color:white;margin:auto;border-radius:10px;border:none;box-shadow:0 0 20px rgba(0,0,0,0.2);';
   iframe.onload = () => {
     iframe.contentWindow?.postMessage({ source: 'onboarden', jwt }, URL);
   };
@@ -41,9 +43,10 @@ export const launch = ({ templateId, jwt, onCompleted }: LaunchArgs) => {
     }
   });
 
-  const closeButton = document.createElement('button');
-  closeButton.textContent = '❌';
-  closeButton.style.cssText = 'position:fixed;top:6px;right:6px;cursor:pointer;';
-  closeButton.onclick = () => document.body.removeChild(div);
-  div.appendChild(closeButton);
+  const closeImage = document.createElement('img');
+  closeImage.src = CLOSE_BUTTON_BASE64;
+
+  closeImage.style.cssText = 'position:fixed;top:8px;right:8px;cursor:pointer;width:28px;';
+  closeImage.onclick = () => document.body.removeChild(div);
+  div.appendChild(closeImage);
 };

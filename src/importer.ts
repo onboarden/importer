@@ -5,6 +5,7 @@ const URL = 'https://app.onboarden.io';
 export type OnCompletedResult = {
   rows: { [key: string]: string }[];
   rowArray: string[][];
+  customColumnKeys: string[];
 };
 
 type LaunchArgs = {
@@ -33,7 +34,12 @@ export const launch = ({ templateId, jwt, onCompleted }: LaunchArgs) => {
 
     switch (event.data.status) {
       case 'succeeded':
-        onCompleted && onCompleted({ rows: event.data.rows ?? [], rowArray: event.data.rowArray ?? [] });
+        onCompleted &&
+          onCompleted({
+            rows: event.data.rows ?? [],
+            rowArray: event.data.rowArray ?? [],
+            customColumnKeys: event.data.customColumnKeys ?? [],
+          });
         document.body.removeChild(div);
         break;
       case 'failed':
